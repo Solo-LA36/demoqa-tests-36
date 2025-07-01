@@ -1,9 +1,6 @@
-package tests;
-
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
@@ -17,14 +14,11 @@ public class AutomationPracticeForm {
         Configuration.browserSize = "1920x1080";
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";
-        Configuration.holdBrowserOpen = true;
-
 
     }
 
-
         @Test
-        void fillFormTest() throws InterruptedException {
+        void fillFormTest() {
             open("/automation-practice-form");
             executeJavaScript("$('footer').remove();");
             executeJavaScript("$('#fixedban').remove();");
@@ -60,7 +54,7 @@ public class AutomationPracticeForm {
             $("[id=currentAddress]")
                     .scrollTo()
                     .shouldBe(visible, enabled)
-                    .setValue("Russia");
+                    .setValue("Russia, MSK");
 
             $("#react-select-3-input").setValue("NCR").pressEnter();
             $("#react-select-4-input").setValue("Delhi").pressEnter();
