@@ -3,15 +3,16 @@ plugins {
 }
 
 repositories {
-    mavenCentral ()
+    mavenCentral()
 }
 
 dependencies {
-    testImplementation(
-            "org.junit.jupiter:junit-jupiter:5.10.0",
-            "com.codeborne:selenide:7.0.0"
+    testImplementation (
+            "com.codeborne:selenide:7.0.0",
+            "org.junit.jupiter:junit-jupiter:5.10.0"
     )
 }
+
 
 test {
     useJUnitPlatform()
