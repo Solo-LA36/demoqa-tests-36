@@ -1,9 +1,9 @@
-package tests;
+package tests.PageObjectModel;
 
 import org.junit.jupiter.api.Test;
 import page.TextBoxPages;
 
-public class TextBoxWithPagesObjectsTests extends TestBase{
+public class TextBoxWithPagesObjectsTests extends TestBase {
     TextBoxPages textBoxPages = new TextBoxPages();
     String userName = "Alex Ivanov";
     String email = "AIvanov@mail.ru";

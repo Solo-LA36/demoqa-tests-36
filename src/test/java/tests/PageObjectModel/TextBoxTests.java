@@ -1,4 +1,4 @@
-package tests;
+package tests.PageObjectModel;
 
 import org.junit.jupiter.api.Test;
 

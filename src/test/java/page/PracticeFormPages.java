@@ -79,23 +79,6 @@ public class PracticeFormPages {
         return this;
     }
 
-    public PracticeFormPages verifyResultsModalAppears() {
-        registrationResultsModal.verifyModalAppears();
-
-        return this;
-    }
-
-    public PracticeFormPages verifyResult(String key, String value) {
-        registrationResultsModal.verifyResult(key, value);
-
-        return this;
-    }
-
-    public PracticeFormPages verifyResultsModalAppearsNeg() {
-        registrationResultsModal.verifyModalAppearsNegativ();
-
-        return this;
-    }
 
     public PracticeFormPages checkResult(String key, String value) {
         $(".table-responsive").$(byText(key)).parent()
