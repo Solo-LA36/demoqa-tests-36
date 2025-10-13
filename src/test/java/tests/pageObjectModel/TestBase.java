@@ -1,4 +1,4 @@
-package tests.PageObjectModel;
+package tests.pageObjectModel;
 
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;

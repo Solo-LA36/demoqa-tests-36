@@ -1,4 +1,4 @@
-package tests.PageObjectModel;
+package tests.pageObjectModel;
 
 import org.junit.jupiter.api.Test;
 import page.NegativeMinFormPage;

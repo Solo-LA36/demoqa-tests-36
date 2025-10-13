@@ -1,7 +1,6 @@
 package page;
 
 import com.codeborne.selenide.SelenideElement;
-import org.openqa.selenium.interactions.Actions;
 import page.components.CalendarComponent;
 import page.components.RegistrationResultsModal;
 
@@ -11,15 +10,24 @@ import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.executeJavaScript;
 
 public class PracticeFormPages {
-    private final SelenideElement firstNameInput = $("#firstName");
-                  SelenideElement lastNameInput = $("#lastName");
-                  SelenideElement userEmailInput = $("#userEmail");
-                  SelenideElement genderWrapper = $("#genterWrapper");
-                  SelenideElement userNumberInput = $("#userNumber");
-                  SelenideElement calendarInput = $("#dateOfBirthInput");
 
     CalendarComponent calendarComponent = new CalendarComponent();
     RegistrationResultsModal registrationResultsModal = new RegistrationResultsModal();
+
+
+    private final SelenideElement
+            firstNameInput = $("#firstName"),
+            lastNameInput = $("#lastName"),
+            userEmailInput = $("#userEmail"),
+            genderWrapper = $("#genterWrapper"),
+            userNumberInput = $("#userNumber"),
+            calendarInput = $("#dateOfBirthInput"),
+            subjectsInput = $("#subjectsInput"),
+            hobbiesInput = $("#hobbiesWrapper"),
+            pictureInput = $("#uploadPicture");
+
+
+
 
 
 
@@ -72,6 +80,30 @@ public class PracticeFormPages {
         return this;
     }
 
+    public PracticeFormPages setSubjects(String value) {
+        subjectsInput.setValue(value).pressEnter();
+
+        return this;
+    }
+
+    public PracticeFormPages setHobbies(String value) {
+        hobbiesInput.$(byText(value)).click();
+
+        return this;
+    }
+
+    public PracticeFormPages uploadPicture(String value) {
+        pictureInput.uploadFromClasspath(value);
+
+        return this;
+    }
+
+    public PracticeFormPages setAdress(String value) {
+        adressInput.setValue(value);
+
+        return this;
+    }
+
     public PracticeFormPages removeAds() {
         executeJavaScript("$('footer').remove();");
         executeJavaScript("$('#fixedban').remove();");
@@ -87,7 +119,4 @@ public class PracticeFormPages {
         return this;
     }
 
-    public void setNumber(String s) {
-
-    }
 }
