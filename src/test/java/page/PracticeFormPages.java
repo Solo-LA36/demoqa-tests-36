@@ -4,7 +4,6 @@ import com.codeborne.selenide.SelenideElement;
 import page.components.CalendarComponent;
 import page.components.RegistrationResultsModal;
 
-import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.executeJavaScript;
@@ -13,6 +12,7 @@ public class PracticeFormPages {
 
     CalendarComponent calendarComponent = new CalendarComponent();
     RegistrationResultsModal registrationResultsModal = new RegistrationResultsModal();
+
 
 
     private final SelenideElement
@@ -33,8 +33,6 @@ public class PracticeFormPages {
 
     public PracticeFormPages openPage() {
         open("/automation-practice-form");
-        executeJavaScript("$('footer').remove();");
-        executeJavaScript("$('#fixedban').remove();");
 
         return this;
     }
@@ -125,16 +123,18 @@ public class PracticeFormPages {
         return this;
     }
 
-
-    public PracticeFormPages verifyResult(String key, String value) {
-        $(".table-responsive").$(byText(key)).parent()
-                .shouldHave(text(value));
+    public PracticeFormPages verifyResultModalAppears() {
+        registrationResultsModal.verifyModalAppears();
 
         return this;
     }
+    public PracticeFormPages verifyResult(String key, String value) {
+        registrationResultsModal.verifyResult(key, value);
 
-    public PracticeFormPages verifyResultModalAppears() {
-        registrationResultsModal.verifyModalAppears();
+        return this;
+    }
+    public PracticeFormPages verifyResultModalAppearsNeg() {
+        registrationResultsModal.verifyModalAppearsNegativ();
 
         return this;
     }

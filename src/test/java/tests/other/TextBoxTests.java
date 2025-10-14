@@ -1,6 +1,7 @@
-package tests.pageObjectModel;
+package tests.other;
 
 import org.junit.jupiter.api.Test;
+import tests.pageobjectmodel.TestBase;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;

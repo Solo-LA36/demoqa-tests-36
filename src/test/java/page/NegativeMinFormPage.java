@@ -3,8 +3,8 @@ package page;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Condition.visible;
 
 public class NegativeMinFormPage {
     private final SelenideElement firstName = $("#firstName");
@@ -12,8 +12,7 @@ public class NegativeMinFormPage {
     private final SelenideElement genderMale = $("label[for='gender-radio-1']");
     private final SelenideElement userNumber = $("#userNumber");
     private final SelenideElement submitButton = $("#submit");
-    private final SelenideElement modalWindow = $(".modal-dialog");
-
+    private final SelenideElement phoneNumberField = $("#userNumber");
 
     public NegativeMinFormPage openPage() {
         Selenide.open("https://demoqa.com/automation-practice-form");
@@ -21,7 +20,6 @@ public class NegativeMinFormPage {
     }
 
     public NegativeMinFormPage removeAds() {
-
         Selenide.executeJavaScript("$('#fixedban').remove()");
         Selenide.executeJavaScript("$('footer').remove()");
         return this;
@@ -52,7 +50,10 @@ public class NegativeMinFormPage {
         return this;
     }
 
-    public void verifyErrorModalDisplayed() {
-        modalWindow.shouldBe(visible);
+    public NegativeMinFormPage verifyPhoneFieldValidationError() {
+        phoneNumberField.shouldHave(cssValue("border-color", "rgb(255, 0, 0)"));
+
+        return this;
     }
+
 }

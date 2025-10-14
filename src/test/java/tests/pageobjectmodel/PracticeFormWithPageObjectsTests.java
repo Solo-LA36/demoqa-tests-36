@@ -1,4 +1,4 @@
-package tests.pageObjectModel;
+package tests.pageobjectmodel;
 
 import org.junit.jupiter.api.Test;
 import page.PracticeFormPages;
@@ -41,8 +41,8 @@ public class PracticeFormWithPageObjectsTests extends TestBase {
                 .verifyResult("Student Name", username + " " + lastName)
                 .verifyResult("Student Email", email)
                 .verifyResult("Gender", gender)
-                .verifyResult("MobileNumber", mobileNumber)
-                .verifyResult("DateOfBirth", birthday[0] + " birthday[1] + " + birthday[2])
+                .verifyResult("Mobile", mobileNumber)
+                .verifyResult("Date of Birth", birthday[0] + " " + birthday[1] + "," + birthday[2])
                 .verifyResult("Subjects", subjects)
                 .verifyResult("Hobbies", hobbies)
                 .verifyResult("Picture", uploadFile)

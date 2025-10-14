@@ -1,9 +1,9 @@
-package tests.pageObjectModel;
+package tests.pageobjectmodel;
 
 import org.junit.jupiter.api.Test;
 import page.NegativeMinFormPage;
 
-public class NegativeMinFormTest extends TestBase{
+public class NegativeMinFormWithPageObjectModelTests extends TestBase{
 
     @Test
     public void negativeMinFormTest() {
@@ -15,6 +15,7 @@ public class NegativeMinFormTest extends TestBase{
                 .setGender()
                 .setNumber("")
                 .submitForm()
-                .verifyErrorModalDisplayed();
+                .verifyPhoneFieldValidationError();
     }
+
 }
