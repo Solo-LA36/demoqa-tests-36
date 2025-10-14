@@ -20,16 +20,15 @@ public class PracticeFormPages {
             lastNameInput = $("#lastName"),
             userEmailInput = $("#userEmail"),
             genderWrapper = $("#genterWrapper"),
-            userNumberInput = $("#userNumber"),
+            numberInput = $("#userNumber"),
             calendarInput = $("#dateOfBirthInput"),
             subjectsInput = $("#subjectsInput"),
             hobbiesInput = $("#hobbiesWrapper"),
-            pictureInput = $("#uploadPicture");
-
-
-
-
-
+            pictureInput = $("#uploadPicture"),
+            addressInput = $("#currentAddress"),
+            stateInput = $("#state"),
+            cityInput = $("#city"),
+            submitTab = $("#submit");
 
 
     public PracticeFormPages openPage() {
@@ -53,20 +52,20 @@ public class PracticeFormPages {
         return this;
     }
 
-    public PracticeFormPages setEmail (String value) {
+    public PracticeFormPages setEmail(String value) {
         userEmailInput.setValue(value);
 
         return this;
     }
 
     public PracticeFormPages setGender(String value) {
-            genderWrapper.$(byText(value)).click();
+        genderWrapper.$(byText(value)).click();
 
         return this;
     }
 
-    public PracticeFormPages setUserNumber(String value) {
-        userNumberInput.setValue(value);
+    public PracticeFormPages setNumber(String value) {
+        numberInput.setValue(value);
 
         return this;
     }
@@ -98,8 +97,23 @@ public class PracticeFormPages {
         return this;
     }
 
-    public PracticeFormPages setAdress(String value) {
-        adressInput.setValue(value);
+    public PracticeFormPages setAddress(String value) {
+        addressInput.setValue(value);
+
+        return this;
+    }
+
+    public PracticeFormPages selectStateAndCity(String state, String city) {
+        stateInput.click();
+        $(byText(state)).click();
+        cityInput.click();
+        $(byText(city)).click();
+
+        return this;
+    }
+
+    public PracticeFormPages submitForm() {
+        submitTab.click();
 
         return this;
     }
@@ -112,11 +126,16 @@ public class PracticeFormPages {
     }
 
 
-    public PracticeFormPages checkResult(String key, String value) {
+    public PracticeFormPages verifyResult(String key, String value) {
         $(".table-responsive").$(byText(key)).parent()
                 .shouldHave(text(value));
 
         return this;
     }
 
+    public PracticeFormPages verifyResultModalAppears() {
+        registrationResultsModal.verifyModalAppears();
+
+        return this;
+    }
 }

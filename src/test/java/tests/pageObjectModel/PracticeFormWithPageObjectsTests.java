@@ -1,13 +1,7 @@
 package tests.pageObjectModel;
 
-import com.codeborne.selenide.SelenideElement;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.support.FindBy;
 import page.PracticeFormPages;
-
-import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.*;
 
 public class PracticeFormWithPageObjectsTests extends TestBase {
 
@@ -17,12 +11,13 @@ public class PracticeFormWithPageObjectsTests extends TestBase {
     String lastName = "Ivanov";
     String email = "AIvanov@mail.ru";
     String gender = "Male";
-    String userNumber = "9601390099";
+    String mobileNumber = "9601390099";
     String[] birthday = new String[] {"25", "August", "1982"};
+    String subjects = "Math";
     String hobbies = "Sports";
     String uploadFile = "Photo.png";
-    String adress = "Some address 1";
-
+    String address = "Some address 1";
+    String[] stateAndCity = new String[] {"NCR", "Delhi"};
 
 
     @Test
@@ -33,30 +28,25 @@ public class PracticeFormWithPageObjectsTests extends TestBase {
                 .setLastName(lastName)
                 .setEmail(email)
                 .setGender(gender)
-                .setUserNumber(userNumber)
-                .setDateOfBirth(birthday [0], birthday[1], birthday[2])
+                .setNumber(mobileNumber)
+                .setDateOfBirth(birthday[0], birthday[1], birthday[2])
+                .setSubjects(subjects)
+                .setHobbies(hobbies)
                 .uploadPicture(uploadFile)
-                .setAdress(adress)
-                .setSubjects("Math")
-                .setHobbies(hobbies);
+                .setAddress(address)
+                .selectStateAndCity(stateAndCity[0], stateAndCity[1])
+                .submitForm();
 
-
-
- //       $("#subjectsInput").setValue("Math").pressEnter();
- //       $("#hobbiesWrapper").$(byText("Sports")).click();
- //       $("#uploadPicture").uploadFromClasspath("Photo.png");
-        $("#currentAddress").setValue("Some address 1");
-        $("#state").click();
-        $("#stateCity-wrapper").$(byText("NCR")).click();
-        $("#city").click();
-        $("#stateCity-wrapper").$(byText("Delhi")).click();
-        $("#submit").click();
-
-        $(".modal-dialog").should(appear);
-        $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
-        $(".table-responsive").shouldHave(text("Alex"), text("Ivanov"),
-                text("AIvanov@mail.ru"), text("9601390099"));
-        practiceFormPages.checkResult("Student Name", "Alex Ivanov")
-                .checkResult("Student Email", "AIvanov@mail.ru");
+        practiceFormPages.verifyResultModalAppears()
+                .verifyResult("Student Name", username + " " + lastName)
+                .verifyResult("Student Email", email)
+                .verifyResult("Gender", gender)
+                .verifyResult("MobileNumber", mobileNumber)
+                .verifyResult("DateOfBirth", birthday[0] + " birthday[1] + " + birthday[2])
+                .verifyResult("Subjects", subjects)
+                .verifyResult("Hobbies", hobbies)
+                .verifyResult("Picture", uploadFile)
+                .verifyResult("Address", address)
+                .verifyResult("State and City", stateAndCity[0] + " " + stateAndCity[1]);
     }
 }

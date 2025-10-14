@@ -9,6 +9,7 @@ import static com.codeborne.selenide.Selenide.$;
 public class RegistrationResultsModal {
     SelenideElement modalContent = $(".modal-content");
     public void verifyModalAppears() {
+
         modalContent.shouldHave(text("Thanks for submitting the form"));
     }
 
