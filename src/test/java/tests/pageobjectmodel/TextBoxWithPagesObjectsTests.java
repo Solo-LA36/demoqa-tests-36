@@ -1,14 +1,18 @@
 package tests.pageobjectmodel;
 
+import com.github.javafaker.Faker;
 import org.junit.jupiter.api.Test;
 import page.TextBoxPages;
 
 public class TextBoxWithPagesObjectsTests extends TestBase {
     TextBoxPages textBoxPages = new TextBoxPages();
-    String userName = "Alex Ivanov";
-    String email = "AIvanov@mail.ru";
-    String currentAddress= "Russia, MSK";
-    String permanentAddress= "Russia, MSK";
+    Faker faker = new Faker();
+
+
+    String userName = faker.name().fullName();
+    String email = faker.internet().emailAddress();
+    String currentAddress = faker.address().fullAddress();
+    String permanentAddress = faker.address().secondaryAddress();
 
     @Test
     void successfulTextBoxTest() {
@@ -17,7 +21,7 @@ public class TextBoxWithPagesObjectsTests extends TestBase {
                 .setUserName(userName)
                 .setEmail(email)
                 .setCurrentAddress(currentAddress)
-                .setPermanentAddress(currentAddress)
+                .setPermanentAddress(permanentAddress)
                 .submitForm();
 
         textBoxPages

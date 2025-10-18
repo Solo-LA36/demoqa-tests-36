@@ -51,7 +51,7 @@ public class NegativeMinFormPage {
     }
 
     public NegativeMinFormPage verifyPhoneFieldValidationError() {
-        phoneNumberField.shouldHave(cssValue("border-color", "rgb(255, 0, 0)"));
+        phoneNumberField.shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
 
         return this;
     }
