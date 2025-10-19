@@ -1,8 +1,10 @@
-package tests.pageobjectmodel;
+package tests.jenkins;
 
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import page.PracticeFormPages;
+import tests.pageobjectmodel.TestBase;
+import tests.pageobjectmodel.TestData;
 
 @Tag("demoqa")
 public class PracticeFormWithPageObjectsTests extends TestBase {
